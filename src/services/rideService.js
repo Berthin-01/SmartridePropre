@@ -18,14 +18,12 @@ function calculateRidePrice(params) {
         delaiAnnulation
     } = params;
 
-    // Si annulation, retourner uniquement les frais
     if (annulation) {
         return {
             prix: calculateCancellationFees(annulation, delaiAnnulation)
         };
     }
 
-    // Calcul du prix normal
     let prix = PRIX_BASE;
     prix += calculateDistanceCost(distance);
     prix = applyPremiumCharge(prix, type);
